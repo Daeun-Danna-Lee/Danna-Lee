@@ -55,4 +55,38 @@ const 변수이름 = async () => {
 - 대부분의 경우에 async, await을 쓰게 될 것
 - 콜백 함수는 오래된 라이브러리, 프로미스는 파이어베이스 할 때 다루게 될 수도 있음
 
+## 3. 모듈
+- `module.exports`로 모듈화하고, `require()`로 불러와준다
 
+
+## 4. 암호화
+- 암호화, 복호화
+- 비밀번호를 그대로 저장하면 안 되는데 우짜냐
+- 만약 비밀번호 그대로 저장해놨다가 DB 탈취 당하면? 범죄지 ...
+- 그래서 암호화를 해서 DB에 저장해놔야 합니다
+
+### 1) Hashing
+- 복호화 할 수 없는 암호화를 위해 해싱을 사용한다
+- `const crypto = require("crypto");`
+- `createHash()`: md5, sha256, sha512 등의 알고리즘을 임력받아 해시 값을 반환
+- `update()`: 변환할 문자열 매개변수로 넣어주기
+- `digest()`: 인코딩 알고리즘 (base64, hex 등)
+
+### 2) Salt
+- password + 임의의 문자열(salt)로 해싱
+  - 더 복잡해지겠지?
+- 유저별로 salt를 다르게 해주고, salt까지 함께 저장해줘야 함 (DB에 pw와 salt가 같이 저장)
+- 비밀번호를 받았을 때 pw, salt를 이용해 해싱을 한 값이 원래 저장해뒀던 값과 같으면 아 비밀번호가 맞구나
+- 비밀번호 원본을 알 필요 없이 비밀번호 일치 유무만 알 수 있음
+
+### 3) Key stretching
+- 해싱을 여러 번 하는 것
+  - 더 안전해지겠지?
+
+### 4) pbkdf2
+- avalanche 효과 (눈사태 효과) : pw가 조금만 바뀌어도 해시 값은 아예 바뀜
+- rainbow attack : 흔한 비밀번호(123456 등)은 비슷한 해시 값이 나오겠지? 리스트가 생성됨 (rainbow list). 그 list를 무작위로 공격하는 것
+- rainbow attack 방지 위해 소금(salt)을 친다
+- 조금 더 안전하게 만들기 위해 그 과정을 n번 반복한다
+- 이걸 **password-based key deriation function(pbkdf)**라고 부름
+- `crypto.pbkdf2(비밀번호, salt 값, 반복 횟수, 출력 byte, 해시 알고리즘, callback);`
