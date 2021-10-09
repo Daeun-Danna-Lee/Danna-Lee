@@ -111,4 +111,59 @@ const 변수이름 = async () => {
 - 비밀번호를 직접 암호화하는 것보다 Firebase의 Authentication 서비스를 활용하는 것이 더 간단
 - fs로 파일을 읽는 것보단 Firebase의 Firestore 서비스를 이용하는 것이 더 유연하기 때문
 
+<br/>
 
+## 7. Express 파일 구조
+- 우리가 서버 구축을 빠르게 할 수 있도록 도와주는 프레임워크, 라이브러리
+
+### 1) app.js
+- `app.set` : 설정
+- `app.use` : 미들웨어 사용 -> 이 부분을 사용할 것
+- set, use 모두 적용 시켜서 `module.exports` -> `www`에서 받아와서 서버 띄움
+
+### 2) package.json
+- 디펜던시 관리
+- 파이썬에서 가상환경 같은 것
+- 디펜던시: 모듈들의 명단 (이 프로젝트에서 사용할 모듈 이름 다 적어놓은 것)
+- 실제 모듈들은 `node_modules`라는 파일 안에 있음
+
+### 3) node_modules
+- .gitignore 해놔야 함
+- 너무 무거워서 들고 다닐 수 없다 -> package.json에 명세서만 보관하는 것
+- npm install로 로컬에 설치해줄 수 있음
+- package.json에는 6개밖에 없는데 왜 이렇게 많이 깔리냐? -> 모듈들에도 각각의 디펜던시가 있기 때문
+- 새로운 모듈 설치는 `npm install 모듈이름`
+
+## 8. Express 페이지 라우팅
+- 프로젝트가 커지다 보면 파일보다 폴더를 많이 쓰게 될 것
+- 큰 차이 없이 routes/index.js에 `router.use("/api", require("./api"));` 이런 식으로 추가만 해주면 됨
+
+### 1) 파일로 라우팅
+```javascript
+// routes/api/index.js
+
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
+```
+
+### 2) 폴더로 라우팅
+```javascript
+// routes/blog.js
+
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
+```
