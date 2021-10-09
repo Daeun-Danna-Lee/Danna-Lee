@@ -90,3 +90,16 @@ const 변수이름 = async () => {
 - 조금 더 안전하게 만들기 위해 그 과정을 n번 반복한다
 - 이걸 **password-based key deriation function(pbkdf)**라고 부름
 - `crypto.pbkdf2(비밀번호, salt 값, 반복 횟수, 출력 byte, 해시 알고리즘, callback);`
+
+## 5. File System
+### 1) 비동기 방식
+- callback을 이용해 하면 됨
+### 2) 동기 방식
+- callback만 빠진 형태
+
+## 6. 우리는 crypto와 fs를 쓰지 않는다
+- 띠용
+- 비밀번호를 직접 암호화하는 것보다 Firebase의 Authentication 서비스를 활용하는 것이 더 간단
+- fs로 파일을 읽는 것보단 Firebase의 Firestore 서비스를 이용하는 것이 더 유연하기 때문
+
+
