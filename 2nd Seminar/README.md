@@ -32,3 +32,27 @@
   - `module.export` 얘를 모듈처럼 취급하겠다 -> 갖다 써지는 파일
   - `require("모듈")` 이런 식으로 갖다 쓸 수 있음 -> 갖다 쓰는 파일
 
+
+### 3) async, await
+- async: Promise를 반환
+- await: Promise를 기다림 (resolve/reject 되기를)
+
+```javascript
+// 함수 선언식
+async function 함수명() {
+  // logic
+  let result = await 실행할함수();
+  console.log(result);
+}
+
+// 함수 표현식
+const 변수이름 = async () => {
+  // logic
+  let result = await 실행할함수();
+  console.log(result);
+}
+```
+- 대부분의 경우에 async, await을 쓰게 될 것
+- 콜백 함수는 오래된 라이브러리, 프로미스는 파이어베이스 할 때 다루게 될 수도 있음
+
+
