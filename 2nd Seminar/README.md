@@ -139,8 +139,9 @@ const 변수이름 = async () => {
 ## 8. Express 페이지 라우팅
 - 프로젝트가 커지다 보면 파일보다 폴더를 많이 쓰게 될 것
 - 큰 차이 없이 routes/index.js에 `router.use("/api", require("./api"));` 이런 식으로 추가만 해주면 됨
+- 여기서 require()에 왜 .js 확장자를 명시하지 않는지에 대한 이유가 나오는데, 그 대상이 폴더일 수도 있고 js 파일일 수도 있기 때문 (아래처럼 api 폴더일 수도 있고 blog.js 파일일 수도 있어서)
 
-### 1) 파일로 라우팅
+### 1) 폴더로 라우팅
 ```javascript
 // routes/api/index.js
 
@@ -155,7 +156,7 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 ```
 
-### 2) 폴더로 라우팅
+### 2) 파일로 라우팅
 ```javascript
 // routes/blog.js
 
