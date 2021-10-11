@@ -134,6 +134,8 @@ const 변수이름 = async () => {
 - package.json에는 6개밖에 없는데 왜 이렇게 많이 깔리냐? -> 모듈들에도 각각의 디펜던시가 있기 때문
 - 새로운 모듈 설치는 `npm install 모듈이름`
 
+<br/>
+
 ## 8. Express 페이지 라우팅
 - 프로젝트가 커지다 보면 파일보다 폴더를 많이 쓰게 될 것
 - 큰 차이 없이 routes/index.js에 `router.use("/api", require("./api"));` 이런 식으로 추가만 해주면 됨
