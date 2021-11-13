@@ -22,9 +22,10 @@ const getUserById = async (client, userId) => {
     // $1에는 배열의 첫번째 변수가, $2에는 배열의 두 번째 변수... 이런 식으로 쿼리문에 변수가 들어가게 됩니다!
 
     // * 세미나 노트
-    // WHERE id = ${userId}로 해주면 타입이 안 맞아서
+    // WHERE id = ${userId}로 해주면 타입이 안 맞아서 
     // WHERE id = '${userId}' 이렇게 써주는데, 이건 너무 복잡하니까
     // WHERE id = $1 이렇게 해서 자동으로 타입을 맞춰준다!
+    // postgres에서 근데 id는 괜찮다 -> 문자, 숫자 동일하게 취급해서 (id 필드만)
 
     [userId],
   );
