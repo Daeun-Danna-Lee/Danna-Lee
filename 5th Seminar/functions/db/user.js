@@ -30,6 +30,7 @@ const getUserById = async (client, userId) => {
     [userId],
   );
   // 위의 getAllUsers와는 달리, 이번에는 유저 하나만 가져오고 싶기 때문에 rows[0]만 리턴해 줍니다.
+  // rows를 리턴하면 [{내용}] 이렇게 배열로 가고, rows[0]으로 쓰면 {} 객체 하나만 간다
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
