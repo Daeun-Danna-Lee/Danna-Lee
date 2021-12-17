@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://db-sopt-server.c34ucbpw03xa.ap-northeast-2.rds.amazonaws.com:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="socar-db" uuid="bc829885-862d-4a12-9ccf-3cd357664b24">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://socar-db.cmcakvgu8puu.ap-northeast-2.rds.amazonaws.com:5432/postgres</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
